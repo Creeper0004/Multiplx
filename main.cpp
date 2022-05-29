@@ -54,17 +54,17 @@ int main() {
 
 void showStart() {
   std::cout << "\n"
-            << "\t   __  __       _ _   _       _      " << std::endl
-            << "\t  |  \\/  |     | | | (_)     | |     " << std::endl
-            << "\t  | \\  / |_   _| | |_ _ _ __ | |_  __" << std::endl
-            << "\t  | |\\/| | | | | | __| | '_ \\| \\ \\/ /" << std::endl
-            << "\t  | |  | | |_| | | |_| | |_) | |>  < " << std::endl
-            << "\t  |_|  |_|\\__,_|_|\\__|_| .__/|_/_/\\_\\" << std::endl
-            << "\t                       | |           " << std::endl
-            << "\t                       |_|           " << std::endl
-            << "\t   A multiplication game & trainer   \n"
-            << "\t           by Creeper0004            \n"
-            << "\t     Licensed under GNU GPL v3.0     \n\n";
+            << "\t    __  __       _ _   _       _       " << std::endl
+            << "\t   |  \\/  |     | | | (_)     | |      " << std::endl
+            << "\t   | \\  / |_   _| | |_ _ _ __ | |_  __ " << std::endl
+            << "\t   | |\\/| | | | | | __| | '_ \\| \\ \\/ / " << std::endl
+            << "\t   | |  | | |_| | | |_| | |_) | |>  <  " << std::endl
+            << "\t   |_|  |_|\\__,_|_|\\__|_| .__/|_/_/\\_\\ " << std::endl
+            << "\t                        | |            " << std::endl
+            << "\t                        |_|            " << std::endl
+            << "\t     A multiplication game & trainer   \n"
+            << "\t             by Creeper0004            \n"
+            << "\t  Licensed under GNU GPL v3.0 or later \n\n";
 }
 
 void parceGamemode() {
@@ -86,9 +86,9 @@ void parceGamemode() {
 }
 
 void promptSettings() {
-  std::cout << "\t  ===================================\n"
-            << "\t  ####         SETTINGS          ####\n"
-            << "\t  ===================================\n";
+  std::cout << "\t  =====================================\n"
+            << "\t  ####          SETTINGS           ####\n"
+            << "\t  =====================================\n";
   std::cout << "\t  Min num: ";
   std::cin >> min;
   std::cout << "\t  Max num: ";
@@ -111,11 +111,10 @@ void showSelectedGamemode() {
     gamemode_name =     "         SURVIVAL         ";
   }
 
-
   std::cout << "\n"
-            << "\t  ===================================\n"
-            << "\t  ####"  <<  gamemode_name  <<  "####\n"
-            << "\t  ===================================\n\n";
+            << "\t  =====================================\n"
+            << "\t  #### "  <<  gamemode_name  <<  " ####\n"
+            << "\t  =====================================\n\n";
 }
 
 void genQuestion() {
@@ -188,9 +187,9 @@ void parseYesNo() {
 }
 
 void showRoundEnd(){
-  std::cout << "\t  ===================================\n"
-            << "\t  ####         Game Over         ####\n"
-            << "\t  ===================================\n";
+  std::cout << "\t  =====================================\n"
+            << "\t  ####          Game Over          ####\n"
+            << "\t  =====================================\n";
   showScore();
   std::cout << "\t  Do you want to play again? [y/n]   \n\t  ";
   parseYesNo();
