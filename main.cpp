@@ -105,10 +105,10 @@ void showSelectedGamemode() {
   std::string gamemode_name;
   switch (gamemode) {
   case 1:
-    gamemode_name =     "         CLASSIC          ";
+    gamemode_name =     "          CLASSIC          ";
     break;
   case 2:
-    gamemode_name =     "         SURVIVAL         ";
+    gamemode_name =     "          SURVIVAL         ";
   }
 
   std::cout << "\n"
