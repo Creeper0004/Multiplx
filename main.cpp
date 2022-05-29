@@ -26,30 +26,65 @@ int score, survival_high_score; //__ mode variables
 bool play_again;
 
 void showStart();
-void promptSettings();
+void showSettingsHead();
 void showSelectedGamemode();
 void genQuestion();
 void showRoundEnd();
 void showScore();
-//void isPlayAgain();
 
-int main() {
+void promptMinNum();
+void promptMaxNum();
+void promptGamemode();
+void promptSettings();
+
+void parceGamemode(std::string ans);
+
+int main(int argc, char const *argv[]) {
+  lives = 0, score = 0, questions = 0, gamemode = 0;
+
   showStart();
   std::srand(time(0)); //Seed the psudo-random number generator
 
-  do {
-    lives = 0, score = 0, questions = 0, gamemode = 0;
+  switch (argc) {
+  case 2:
+    min = 0;
+    max = strtol(argv[1], NULL, 10);
+    showSettingsHead();
+    promptGamemode();
+    showSelectedGamemode();
+    break;
+  case 3:
+    min = strtol(argv[1], NULL, 10);
+    max = strtol(argv[2], NULL, 10);
+    showSettingsHead();
+    promptGamemode();
+    showSelectedGamemode();
+    break;
+  case 4:
+    min = strtol(argv[1], NULL, 10);
+    max = strtol(argv[2], NULL, 10);
+    parceGamemode(argv[3]);
+    showSelectedGamemode();
+    break;
+  default:
     promptSettings();
     showSelectedGamemode();
+  }
 
+  do {
     while ((questions > 0) || (lives > 0)) {
       genQuestion();
     }
 
     showRoundEnd();
-  } while (play_again);
+    if (!play_again) {
+      return 0;
+    }
 
-  return 0;
+    lives = 0, score = 0, questions = 0, gamemode = 0;
+    promptSettings();
+    showSelectedGamemode();
+  } while (play_again);
 }
 
 void showStart() {
@@ -67,10 +102,13 @@ void showStart() {
             << "\t  Licensed under GNU GPL v3.0 or later \n\n";
 }
 
-void parceGamemode() {
-  std::string ans;
-  std::cin >> ans;
+void showSettingsHead() {
+  std::cout << "\t  =====================================\n"
+            << "\t  ####          SETTINGS           ####\n"
+            << "\t  =====================================\n";
+}
 
+void parceGamemode(std::string ans) {
   if ((ans == "1") || (ans == "classic") || (ans == "practice")) {
     gamemode = 1;
 
@@ -80,25 +118,34 @@ void parceGamemode() {
     gamemode = 2;
     lives = 3;
   } else {
-    std::cout << "\t  Unknown Input\n\t  ";
-    parceGamemode();
+    std::cout << "\t  Unknown Input\n";
+    promptGamemode();
   }
 }
 
-void promptSettings() {
-  std::cout << "\t  =====================================\n"
-            << "\t  ####          SETTINGS           ####\n"
-            << "\t  =====================================\n";
+void promptMinNum() {
   std::cout << "\t  Min num: ";
   std::cin >> min;
+}
+
+void promptMaxNum() {
   std::cout << "\t  Max num: ";
   std::cin >> max;
+}
 
+void promptGamemode(/* arguments */) {
   std::cout << "\t  => 1. Classic  2. Survival\n";
   std::cout << "\t  Gamemode: ";
+  std::string ans;
+  std::cin >> ans;
+  parceGamemode(ans);
+}
 
-  parceGamemode();
-
+void promptSettings() {
+  showSettingsHead();
+  promptMinNum();
+  promptMaxNum();
+  promptGamemode();
 }
 
 void showSelectedGamemode() {
