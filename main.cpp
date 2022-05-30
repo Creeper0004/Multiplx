@@ -156,6 +156,9 @@ void showSelectedGamemode() {
     break;
   case 2:
     gamemode_name =     "          SURVIVAL         ";
+    break;
+  default:
+    gamemode_name =     "     UNKNOWN GAMEMODE      ";
   }
 
   std::cout << "\n"
@@ -213,7 +216,8 @@ void showScore() {
       survival_high_score = score;
     }
     break;
-  //default:
+  default:
+    std::cout << "\t  Unhandled case: gamemode " << gamemode << '\n';
   }
 }
 
